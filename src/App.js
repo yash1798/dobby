@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Container } from "@material-ui/core";
+import Navbar from "./presentational/Navbar"
+import SearchField from "./presentational/SearchField"
+import {useState} from "react"
+import UserList from "./container/UserList";
 
 function App() {
+
+
+  const [term, setTerm] = useState("")
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+      <Navbar />
+      <SearchField setTerm={(input) => setTerm(input)}/>
+      <UserList term={term}/>
+      </Container>
+      
     </div>
   );
 }
